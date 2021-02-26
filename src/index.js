@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render( <App />,  document.getElementById('root'));
+//<App>/ : component - HTML을 반환하는 함수
+//JSX : javascript 안의 HTML. 
+//Component를 만들고 어떻게 사용하는지에 대한 것
+
+//react application은 한 번에 하나의 component만 rendering 할 수 있다.
+//따라서 모든 것은 App 안에 들어가야함
