@@ -1,70 +1,24 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const foodILike = [
-  { 
-    id: 1,
-    name: "Kimchi",
-    image:
-      "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg"
-    ,rating: 5  
-  },
-  {
-    id: 2,
-    name: "Samgyeopsal",
-    image:
-      "https://3.bp.blogspot.com/-hKwIBxIVcQw/WfsewX3fhJI/AAAAAAAAALk/yHxnxFXcfx4ZKSfHS_RQNKjw3bAC03AnACLcBGAs/s400/DSC07624.jpg"
-     ,rating: 4.9 
-  },
-  {
-    id: 3,
-    name: "Bibimbap",
-    image:
-      "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/12/03/bibimbop-ck-x.jpg?itok=RoXlp6Xb"
-    , rating: 4.8
-   },
-  {
-    id: 4,
-    name: "Doncasu",
-    image:
-      "https://s3-media3.fl.yelpcdn.com/bphoto/7F9eTTQ_yxaWIRytAu5feA/ls.jpg"
-      ,rating: 5.5
-   },
-  {
-    id: 5,
-    name: "Kimbap",
-    image:
-      "http://cdn2.koreanbapsang.com/wp-content/uploads/2012/05/DSC_1238r-e1454170512295.jpg"
-      ,rating: 4.7
-    }
-
-]
-
-function Food({ name, picture, rating }){
-  return (
-  <div>
-    <h2>I like { name }</h2>
-    <h4>{rating}/5.0</h4>
-    <img src={picture} alt={name}/>
-  </div>
-    );
-
-}
-
-Food.propTypes = {
-  name : PropTypes.string.isRequired,
-  picture : PropTypes.string.isRequired,
-  rating : PropTypes.number.isRequired
-}
-
-function App() {
-  return(
-  <div>
-    {foodILike.map(dish =>(
-       <Food key={dish.id} name ={dish.name} picture={dish.image} rating={dish.rating}/>
-    ))}
-  </div>
-  );
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(current =>({count : current.count + 1}));
+  };
+  minus = () => {
+    this.setState(current =>({count : current.count - 1}));
+  };
+  
+  render(){
+    return <div>
+    <h1>The number is {this.state.count}</h1>
+    <button onClick={this.add}>Add</button>
+    <button onClick={this.minus}>Minus</button>
+    </div>
+  }
 }
 
 export default App;
@@ -91,3 +45,19 @@ export default App;
 
 //#3.0 State : 동적 데이터와 함께 작업할 때 만들어진다.
 // 변하는 데이터, 존재하지 않는 데이터 
+
+//Function component는 function이고 무언가를 return 후 screen에 표시됨
+//class component는 class이고 react componnent로부터 확장되고 screen에 표시됨
+// 표시될것은 render 메소드 안에 넣어야 함
+//react는 class component의 render method를 자동으로! 실행한다!
+
+//class를 쓰는 이유 ! state를 쓰기 위해
+//state는 object이고 component의 data를 넣을 공간이 있고
+// 이 데이터는 변한다
+// 바꾸고 싶은 데이터를 state 안에 넣는다!
+
+//setState를 쓰지 않으면 
+//새 state와 함께 render function이 호츨되지 않는다!
+
+//setState를 호출할 때마다 react는 새로운 state와 함께
+//render function을 호출한다
