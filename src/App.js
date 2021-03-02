@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    console.log("hello");
+  }
   state = {
     count: 0
   };
@@ -11,8 +15,16 @@ class App extends React.Component{
   minus = () => {
     this.setState(current =>({count : current.count - 1}));
   };
-  
+  componentDidMount(){
+    console.log("component rendered");
+  }
+
+  componentDidUpdate(){
+    console.log("I just updated");
+  }
+
   render(){
+    console.log("I'm rendering");
     return <div>
     <h1>The number is {this.state.count}</h1>
     <button onClick={this.add}>Add</button>
@@ -61,3 +73,15 @@ export default App;
 
 //setState를 호출할 때마다 react는 새로운 state와 함께
 //render function을 호출한다
+
+//#3.2 Component Life Cycle
+//Mounting - component가 생성될 때
+//constructor() - javascript
+//render() 
+//componentDidMount()
+
+//Updating - component에 update할 때 
+//setState 호출-> component 호출 -> render 호출 -> componentDidUpdate
+
+//Unmounting - component가 죽을 때
+//componentWillUnmount()
